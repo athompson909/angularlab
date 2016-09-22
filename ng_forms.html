@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+	<link rel="stylesheet" href="ng_forms.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+	<script type="text/javascript">
+
+		var app = angular.module("famHistList", []);
+		app.controller("addCtrl", function($scope) {
+		    $scope.famList = [];
+
+		    $scope.addNew = function() {
+		        $scope.famList.push({first:$scope.firstname, father:$scope.fathername, mother:$scope.mothername, checked:false});
+		        console.log($scope.famList);
+		        $scope.firstname = "";
+		        $scope.fathername = "";
+		        $scope.mothername = "";
+		    }
+
+		    $scope.removeCheckedItems = function() {
+		    	var oldFamList = $scope.famList;
+		    	$scope.famList = [];
+		    	var a = $scope.ischecked;
+		    	var b = $scope.famList;
+		    	console.log(a);
+		    	console.log(b);
+		    	console.log(oldFamList);
+		    	angular.forEach(oldFamList, function(x) {
+		    		if(!x.checked) $scope.famList.push(x);
+		    	});
+
+		    }
+
+		});
+
+	</script>
+
+<body>
+
+	<header class="container" id="header">
+		<div class="row" id="header_row">
+			<h1>MY FAMILY HISTORY LIST</h1>
+		</div>
+	</header>
+
+
+	<section class="container" id="middle">
+		<div class="row">
+			<div class="col-sm-12" id="main">
+
+
+				<div class="list" ng-app="famHistList" ng-controller="addCtrl">
+					<h2>fill in the form and click "Add New" to add your family info to the list</h2>
+					<form>
+						<input type="text" ng-model="firstname" placeholder="Person">
+						<input type="text" ng-model="fathername" placeholder="Father">
+						<input type="text" ng-model="mothername" placeholder="Mother">
+						<button ng-click="addNew()">Add New</button>
+					</form>
+					<br>
+					<br>
+					<h3>MY FAMILY</h3>
+					<h4>(format: child, father, mother)</h4>
+				    <ul>
+				    	<li ng-repeat="x in famList">
+			        		<input type="checkbox" ng-model="x.checked">
+				    		{{x.first}}, {{x.father}}, {{x.mother}}
+				    	</li>
+				    </ul>
+					</form>
+					<br>
+					<br>
+					<button ng-click="removeCheckedItems()">Remove Checked Items</button>
+				</div>
+
+			</div>
+		</div>
+	</section>
+</body>
+</html>

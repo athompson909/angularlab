@@ -1,0 +1,46 @@
+body {
+	background-color: #66b9bf;
+}
+
+ul {
+	list-style: none;
+	padding: 0;
+	list-style-type: none;
+}
+
+.list {
+	font-size: 20px;
+}
+
+header {
+	background-color: #07889B;
+	text-align: center;
+	padding: 36px;
+}
+
+header h1 {
+	color: #f2f2f2;
+	font-size: 48px;
+}
+
+#main {
+	padding: 100px 20px;
+	color: #07889B;
+	background-color: #f2f2f2;
+}
+
+#main h3, #main h4 {
+	font-size: 28px;
+	padding-left: 60px;
+}
+
+form, li {
+	color: #e37222;
+
+}
+
+ul {
+	padding: 20px;
+	margin: 20px;
+	border: 2px solid #07889b;
+}
